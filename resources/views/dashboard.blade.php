@@ -15,7 +15,7 @@
                         class="h-14 w-full pl-10 pr-20 bg-black text-white bg-opacity-60 rounded-lg z-0 focus:shadow focus:outline-none"
                         placeholder="Look up what you need" />
                     <div class="absolute top-2 right-2">
-                        <button type="submit" class="h-10 w-20 text-white rounded-lg bg-green-500 hover:bg-green-700">
+                        <button type="submit" class="h-10 w-20 text-white rounded-lg bg-lime-500 hover:bg-lime-700">
                             Search
                         </button>
                     </div>
@@ -27,14 +27,18 @@
                         <div class="w-full hover:bg-slate-700 bg-gray-900 rounded-xl">
                             <a href="{{ route('product.show', $product->id) }}">
                                 @if ($product->image)
-                                    <img class="rounded-md h-24 my-3 m-auto" src="{{ "/storage/$product->image" }}"
-                                        alt>
+                                    <img class="rounded-md h-24 my-3 m-auto" src="{{ "/storage/$product->image" }}" alt>
                                 @else
                                     <img class="rounded-md h-20 my-3 mx-auto" src="{{ '/storage/def.png' }}" alt>
                                 @endif
                                 <div class="flex justify-start">
                                     <p class="p-2">
-                                        {{ Str::words($product->title, 1, '') }}
+                                        {{ Str::words($product->title, 2, '') }}
+                                    </p>
+                                </div>
+                                <div class="flex justify-start">
+                                    <p class="p-2">
+                                        {{ Str::words($product->description, 20, '...') }}
                                     </p>
                                 </div>
                                 <div class="flex justify-start">
