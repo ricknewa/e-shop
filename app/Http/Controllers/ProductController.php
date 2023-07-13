@@ -19,11 +19,13 @@ class ProductController extends Controller
     {
         $products = Product::all();
         return view('product.index')->with('products', $products);
+
     }
     public function dashboard()
     {
-        $products = Product::all();
+        $products = Product::latest()->filter(request(['search']))->paginate(6);
         return view('dashboard')->with('products', $products);
+
     }
 
     /**
