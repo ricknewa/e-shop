@@ -30,7 +30,7 @@
                                     <img class="rounded-md h-24 my-3 m-auto" src="{{ "/storage/$product->image" }}"
                                         alt>
                                 @else
-                                    <img class="rounded-md h-20 my-3 mx-auto" src="{{ '/storage/logo.png' }}" alt>
+                                    <img class="rounded-md h-20 my-3 mx-auto" src="{{ '/storage/def.png' }}" alt>
                                 @endif
                                 <div class="flex justify-start">
                                     <p class="p-2">

@@ -4,7 +4,14 @@
             {{ __('Avatar') }}
         </h2>
         <div class="overflow-hidden h-16 w-16">
+            @if ($user->avatar)
             <img class="rounded-full aspect-square object-cover h-16" src="{{ "/storage/$user->avatar" }}">
+
+                
+            @else
+                
+            <img class="rounded-full aspect-square object-cover h-16" src="{{ "/storage/default.png" }}">
+            @endif
         </div>
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
             {{ __("Update your account's avatar.") }}
