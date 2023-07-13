@@ -4,7 +4,13 @@
         <x-auth-session-status class="mb-4" :status="session('status')" />
         <div class="text-white h-auto mb-4 px-2 ">
             <div class="rounded-md w-full mx-auto my-4 p-3 bg-white bg-opacity-10">
+                @if ($product->image)
                 <img class="rounded-md w-full" src="{{ "/storage/$product->image" }}">
+                    
+                @else
+                    
+                <img class="rounded-md w-full" src="{{ "/storage/q.png" }}">
+                @endif
             </div>
             <p class="p-2"> {{ $product->title }} </p>
             <p class="p-2"> {{ $product->description }} </p>

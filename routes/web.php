@@ -8,6 +8,7 @@ use Laravel\Socialite\Two\GithubProvider;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\profile\AvatarController;
+use App\Models\product;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -21,9 +22,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', [ProductController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
