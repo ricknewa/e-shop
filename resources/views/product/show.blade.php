@@ -9,7 +9,7 @@
                     
                 @else
                     
-                <img class="rounded-md w-full" src="{{ "/storage/q.png" }}">
+                <img class="rounded-md w-full" src="{{ "/storage/def.png" }}">
                 @endif
             </div>
             <p class="p-2"> {{ $product->title }} </p>

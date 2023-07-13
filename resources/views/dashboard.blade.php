@@ -36,11 +36,11 @@
                                     <p class="p-2">
                                         {{ Str::words($product->title, 1, '') }}
                                     </p>
+                                </div>
+                                <div class="flex justify-start">
                                     <p class="justify-items-end p-2 ">Rs.{{ $product->price }} </p>
                                 </div>
-                                <div class=" ">
-                                </div>
-                                <div class=" basis-1/5 ">
+                                <div class="flex justify-start">
                                     <p class=" p-2"> {{ $product->created_at->diffForHumans() }} </p>
                                 </div>
                             </a>
