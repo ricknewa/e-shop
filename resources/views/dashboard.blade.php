@@ -24,6 +24,8 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100 grid gap-4 grid-cols-5">
                     @foreach ($products as $product)
+            @if (auth()->user()->id <> $product->user_id)
+
                         <div class="w-full hover:bg-slate-700 bg-gray-900 rounded-xl">
                             <a href="{{ route('product.show', $product->id) }}">
                                 @if ($product->image)
@@ -50,6 +52,8 @@
                             </a>
 
                         </div>
+                        @endif
+
                     @endforeach
                 </div>
             </div>
