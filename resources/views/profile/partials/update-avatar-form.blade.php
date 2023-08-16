@@ -1,44 +1,44 @@
 <section>
-    <header>
-        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            {{ __('Avatar') }}
-        </h2>
-        <div class="overflow-hidden h-16 w-16">
-            @if ($user->avatar)
-            <img class="rounded-full aspect-square object-cover h-16" src="{{ "/storage/$user->avatar" }}">
+  <header>
+  <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+  {{ __('Avatar') }}
+  </h2>
+  <div class="overflow-hidden h-16 w-16">
+  @if ($user->avatar)
+  <img class="rounded-full aspect-square object-cover h-16" src="{{ "/storage/$user->avatar" }}">
 
-                
-            @else
-                
-            <img class="rounded-full aspect-square object-cover h-16" src="{{ "/storage/default.png" }}">
-            @endif
-        </div>
-        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __("Update your account's avatar.") }}
-        </p>
-    </header>
-    @if (session('message'))
-    <div class="text-green-600">
-        {{ session('message') }}
-    </div>
-    @endif
+  
+  @else
+  
+  <img class="rounded-full aspect-square object-cover h-16" src="{{ "/storage/default.png" }}">
+  @endif
+  </div>
+  <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+  {{ __("Update your account's avatar.") }}
+  </p>
+  </header>
+  @if (session('message'))
+  <div class="text-green-600">
+  {{ session('message') }}
+  </div>
+  @endif
 
-    <form method="post" action="{{ route('profile.avatar') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
-        @csrf
-        @method('patch')
+  <form method="post" action="{{ route('profile.avatar') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
+  @csrf
+  @method('patch')
 
-        <div>
-            <x-input-label for="avatar" :value="__('Avatar')" />
-            <x-text-input id="avatar" name="avatar" type="file" class="mt-1 block w-full" :value="old('avatar', $user->avatar)" required autofocus autocomplete="avatar" />
-            <x-input-error class="mt-2" :messages="$errors->get('avatar')" />
-        </div>
+  <div>
+  <x-input-label for="avatar" :value="__('Avatar')" />
+  <x-text-input id="avatar" name="avatar" type="file" class="mt-1 block w-full" :value="old('avatar', $user->avatar)" required autofocus autocomplete="avatar" />
+  <x-input-error class="mt-2" :messages="$errors->get('avatar')" />
+  </div>
 
-        <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+  <div class="flex items-center gap-4">
+  <x-primary-button>{{ __('Save') }}</x-primary-button>
 
-            @if (session('status') === 'profile-updated')
-            <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)" class="text-sm text-gray-600 dark:text-gray-400">{{ __('Saved.') }}</p>
-            @endif
-        </div>
-    </form>
+  @if (session('status') === 'profile-updated')
+  <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)" class="text-sm text-gray-600 dark:text-gray-400">{{ __('Saved.') }}</p>
+  @endif
+  </div>
+  </form>
 </section>

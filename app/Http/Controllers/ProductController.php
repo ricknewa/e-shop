@@ -19,13 +19,16 @@ class ProductController extends Controller
     {
         $products = Product::all();
         return view('product.index')->with('products', $products);
-
     }
     public function dashboard()
     {
         $products = Product::latest()->filter(request(['search']))->paginate(6);
         return view('dashboard')->with('products', $products);
-
+    }
+    public function cart()
+    {
+        $products = Product::all();
+        return view('cart')->with('products', $products);
     }
 
     /**
@@ -50,9 +53,7 @@ class ProductController extends Controller
         ]);
         if ($request->file('image')) {
             $this->storeimage($request, $product);
-        }
-        else{
-            
+        } else {
         }
         return redirect(route('product.index'))->with('message', 'Avatar is updated');
     }
@@ -76,11 +77,12 @@ class ProductController extends Controller
      */
     public function update(UpdateproductRequest $request, product $product)
     {
-        $product->update(['title' => $request->title, 'description' => $request->description,'price'=>$request->price]);
+        dd($request->all());
+        $product->update(['title' => $request->title, 'description' => $request->description, 'price' => $request->price]);
 
         if ($request->file('image')) {
-            if($product->image != null)
-            Storage::disk('public')->delete($product->image);
+            if ($product->image != null)
+                Storage::disk('public')->delete($product->image);
             $this->storeimage($request, $product);
         }
 

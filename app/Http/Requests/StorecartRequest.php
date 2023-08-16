@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateproductRequest extends FormRequest
+class StorecartRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,10 +22,7 @@ class UpdateproductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['string', 'max:255'],
-            'description' => ['string'],
-            'image' => ['file', 'mimes:jpg,jpeg,png,pdf'],
-            'cart' => ['integer'],
+            //
         ];
     }
 }

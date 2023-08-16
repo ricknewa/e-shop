@@ -5,18 +5,15 @@
         <div class="text-white h-auto mb-4 px-2 ">
             <div class="rounded-md w-full mx-auto my-4 p-3 bg-white bg-opacity-10">
                 @if ($product->image)
-                <img class="rounded-md w-full" src="{{ "/storage/$product->image" }}">
-                    
+                    <img class="rounded-md w-full" src="{{ "/storage/$product->image" }}">
                 @else
-                    
-                <img class="rounded-md w-full" src="{{ "/storage/def.png" }}">
+                    <img class="rounded-md w-full" src="{{ '/storage/def.png' }}">
                 @endif
             </div>
             <p class="p-2"> {{ $product->title }} </p>
             <p class="p-2"> {{ $product->description }} </p>
             <p class="p-2"> {{ $product->created_at->diffForHumans() }} </p>
             <p class="p-2 ">Rs. {{ $product->price }} </p>
-            <p class="p-2 ">{{ $product->instock }} </p>
             @if (auth()->user()->id === $product->user_id)
                 <div class="flex justify-around mt-10">
                     <x-primary-button>
